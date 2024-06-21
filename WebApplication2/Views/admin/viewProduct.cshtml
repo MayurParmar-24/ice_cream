@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication2.Models.Product>
+
+@{
+    ViewData["Title"] = "viewProduct";
+    Layout = "~/Views/Shared/dashboard.cshtml";
+}
+
+<h1>View Product</h1>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Product-Image
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="font-weight: bold">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+                <td style="font-weight: bold">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+
+                    <img src="~/Product_img/@Html.DisplayFor(modelItem => item.Product_image)" width="50%" height="150px">
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-info" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

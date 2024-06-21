@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication2.Models.feedback>
+
+@{
+    ViewData["Title"] = "viewfeedback";
+    Layout = "~/Views/Shared/dashboard.cshtml";
+}
+
+<h1>View Feedback</h1>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                NAME
+            </th>
+            <th>
+                EMAIL
+            </th>
+            <th>
+                MESSAGE
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                <a asp-action="fbupdate" class="btn btn-success" asp-route-id="@item.Id">Update</a> |
+                
+                <a asp-action="feedbackDelete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

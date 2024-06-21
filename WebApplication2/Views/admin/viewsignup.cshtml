@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication2.Models.signup>
+
+@{
+    ViewData["Title"] = "viewsignup";
+    Layout = "~/Views/Shared/dashboard.cshtml";
+}
+
+<h1>View Signup</h1>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                NAME
+            </th>
+            <th>
+                EMAIL
+            </th>
+            <th>
+                PASSWORD
+            </th>
+            <th>
+                RE-PASSWORD
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Re_Password)
+            </td>
+            <td>
+                    <a asp-action="signupDetail" class="btn btn-primary" asp-route-id="@item.id">Detail</a> |
+
+                <a asp-action="signupdate" class="btn btn-success" asp-route-id="@item.id">Update</a> |
+               
+                <a asp-action="signupDelete" class="btn btn-danger" asp-route-id="@item.id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model WebApplication2.Gallery_
+
+@{
+    ViewData["Title"] = "addGallery";
+    Layout = "~/Views/Shared/dashboard.cshtml";
+}
+
+<h1>Add Gallery</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="addGallery" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                
+                <input asp-for="Photo" class="form-control" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Add Photo" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

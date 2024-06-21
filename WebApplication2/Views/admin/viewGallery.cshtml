@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebApplication2.Models.Gallery>
+
+@{
+    ViewData["Title"] = "viewGallery";
+    Layout = "~/Views/Shared/dashboard.cshtml";
+}
+
+<h1>View Gallery</h1>
+
+
+             
+      <div class="container mt-5">
+ <div class="row">
+          
+    
+@foreach (var item in Model) {
+        
+    <div class="col-lg-4">
+                <img src="~/images/@Html.DisplayFor(modelItem => item.Gallery_img)" width="50%" height="150px">
+               
+            
+                
+                <a asp-action="GalleryDelete" class="btn btn-danger"  asp-route-id="@item.Gallery_Id">Delete</a>
+           </div>
+}
+    </div>
+</div>
